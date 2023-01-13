@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load mi_filtro %}
+<!-- slider wrapper -->
+<div class="slide-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-left mb-4 mt-4">
+                <h2>{{ director.nombre }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="slide-slider-full owl-carousel owl-theme">
+                    {% for pelicula in peliculas %}
+                    <div class="owl-items">
+                        <a class="slide-one" href="">
+                            <div class="slide-image">
+                                <img src="{{ pelicula.obtener_portada }}" alt="image">
+                            </div>
+                            <div class="slide-content">
+                                <h2>{{ pelicula.nombre }} <img src="{% static 'images/plus.png' %}" alt="icon"></h2>
+                                <p>{{ pelicula.descripcion | truncatechars:167 }}</p>
+                                <span class="tag">{{ pelicula.tiempo | formatear_tiempo }}</span>
+                                <span class="tag">{{ pelicula.año }}</span>
+                                <span class="tag">{{ pelicula.director }}</span>
+                                <span class="tag"><b>HD</b></span>
+                                <div>
+                                    <span class="tag"><b>{% for genero in pelicula.generos %}{{ genero }} {% endfor %}</b></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider wrapper -->
+{% endblock content %}

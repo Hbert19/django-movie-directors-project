@@ -1,0 +1,74 @@
+{% load static %}
+{% load mi_filtro %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todas las películas</title>
+
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="preloader"></div>
+    <div class="main-wrapper">
+        {% include 'header.html' %}
+        <div class="page-nav p-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="search-wrapper">
+                            <h2 class="mb-3">Todas las películas</h2>
+                            <p class="mb-0">En esta sección las películas se encuentran ordenadas alfabéticamente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- slider wrapper -->
+        <div class="slide-wrapper search-wrap-slide">
+            <div class="container">
+                <div class="row">
+                    {% for pelicula in peliculas %}
+                    <div class="col-sm-12 col-md-6 col-lg-4 mt-4">
+                        <div class="owl-items">
+                            <a class="slide-one" href="#">
+                                <div class="slide-image"><img src="{{ pelicula.obtener_portada }}" alt="image"></div>
+                                <div class="slide-content">
+                                    <h2>{{ pelicula.nombre }} <img src="{% static 'images/plus.png' %}" alt="icon"></h2>
+                                    <p>{{ pelicula.descripcion | truncatechars:167 }}</p>
+                                    <span class="tag">{{ pelicula.tiempo | formatear_tiempo }}</span>
+                                    <span class="tag">{{ pelicula.año }}</span>
+                                    <span class="tag">{{ pelicula.director }}</span>
+                                    <span class="tag"><b>HD</b></span>
+                                    <div><span class="tag"><b>{% for genero in pelicula.generos %}{{ genero }} {% endfor %}</b></span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- slider wrapper -->
+
+        {% include 'footer.html' %}
+
+    </div>
+
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+</body>
+
+</html>

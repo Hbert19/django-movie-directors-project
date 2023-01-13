@@ -1,0 +1,38 @@
+{% load static %}
+<!-- header wrapper -->
+<div class="header-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 navbar p-0">
+                <a href="index.html" class="logo"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav nav-menu float-none text-center">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'peliculas' %}">Peliculas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="user-avater">
+                    <img src="{% static 'images/user-8.png' %}" alt="user">
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="#"><i class="ti-user"></i>My Profile</a></li>
+                            <li><a href="#"><i class="ti-heart"></i>My Favorites</a></li>
+                            <li><a href="#"><i class="ti-world"></i>Privacy Policy</a></li>
+                            <li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="search-div">
+                    <input type="text" placeholder="Seacrh">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header wrapper -->
